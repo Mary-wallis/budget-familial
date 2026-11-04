@@ -10,6 +10,26 @@
 
 <body>
 
+<div class="card" id="connexionCard">
+
+    <h2>🔒 Connexion</h2>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Adresse e-mail">
+
+    <input
+        type="password"
+        id="motdepasse"
+        placeholder="Mot de passe">
+
+    <button onclick="connexion()">
+        Se connecter
+    </button>
+</div>
+<div id="application">
+
     <header>
         <h1>🏡 Budget Familial</h1>
     </header>
@@ -205,10 +225,13 @@
 
     </table>
 
-</div>
-    <script type="module" src="firebase.js"></script>
+
+<script type="module" src="firebase.js"></script>
 <script src="script.js"></script>
+</div>
 
 </body>
-
 </html>
+<button onclick="deconnexion()">
+    🚪 Déconnexion
+</button>
