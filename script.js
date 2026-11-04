@@ -205,11 +205,9 @@ function calculer() {
     sauvegarder();
 }
 
-window.onload = async function () {
+window.onload = function () {
 
     charger();
-
-    await chargerDepuisFirestore();
 
 };
 let historiqueMois =
@@ -435,4 +433,49 @@ async function chargerDepuisFirestore() {
 
     }
 
+}
+async function connexion() {
+
+    let email =
+        document.getElementById("email").value;
+
+    let motdepasse =
+        document.getElementById("motdepasse").value;
+
+    try {
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            motdepasse
+        );
+
+        alert("✅ Connexion réussie");
+
+        document.getElementById("connexionCard")
+    .style.display = "none";
+
+document.getElementById("application")
+    .style.display = "block";
+
+        await chargerDepuisFirestore();
+
+    } catch (erreur) {
+
+        console.error(erreur);
+
+        alert("❌ Échec de connexion");
+
+    }
+
+}
+async function deconnexion() {
+
+    await signOut(auth);
+
+    document.getElementById("connexionCard")
+        .style.display = "block";
+
+    document.getElementById("application")
+        .style.display = "none";
 }
